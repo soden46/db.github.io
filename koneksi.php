@@ -1,5 +1,5 @@
 <?php
-
+include 'pabrik.sql';
 $server="localhost";         /*local server localhost*/
 $user="root";               /*User server mysql anda*/
 $pass="";                  /*password server mysql anda*/
