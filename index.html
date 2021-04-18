@@ -9,8 +9,7 @@ if (!$conn) {
 	die ('Gagal terhubung dengan MySQL: ' . mysqli_connect_error());	
 }
 
-$sql = 'SELECT * 
-		FROM pabrik';
+$sql = 'SELECT * FROM pabrik';
 		
 $query = mysqli_query($conn, $sql);
 
@@ -45,8 +44,8 @@ if (!$query) {
 		while ($row = mysqli_fetch_array($query))
 		{
 			echo '<tr>
-					<td>'.$no.'</td>
-					 <td>".$data['idgudang']."</td>
+	   <td>'.$no.'</td>
+	   <td>".$data['idgudang']."</td>
            <td>".$data['stok_produk']."</td>
            <td>".$data['tanggal_datang_bunga']."</td>
            <td>".$data['jenis_produk']."</td>
