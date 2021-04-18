@@ -53,16 +53,8 @@ if (!$query) {
            <td>".$data['idpesan_bunga']."</td>
            <td>".$data['kode_produk']."</td>
 				</tr>';
-			$total += $row['idgudang'];
-			$no++;
 		}?>
 		</tbody>
-		<tfoot>
-			<tr>
-				<th colspan="4">TOTAL</th>
-				<th><?=number_format($total, 0, ',', '.')?></th>
-			</tr>
-		</tfoot>
 	</table>
 </body>
 </html>
