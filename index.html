@@ -1,60 +1,43 @@
 <?php
-$db_host = 'localhost'; // Nama Server
-$db_user = 'root'; // User Server
-$db_pass = ''; // Password Server
-$db_name = 'pabrik'; // Nama Database
-
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if (!$conn) {
-	die ('Gagal terhubung dengan MySQL: ' . mysqli_connect_error());	
-}
-
-$sql = 'SELECT * FROM pabrik';
-		
-$query = mysqli_query($conn, $sql);
-
-if (!$query) {
-	die ('SQL Error: ' . mysqli_error($conn));
-}
+//panggil file koneksi.php yang sudah anda buat
+include "koneksi.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html public "-//W3C//DTD HTML 4.0 //EN">
+<html>
 <head>
-	<title>Menampilkan Data MySQL Ke Dalam Tabel HTML</title>
-        <link rel="stylesheet" href="css/styles.css">
+       <title>Datyabase Pabrik</title>
 </head>
 <body>
-	<h1>Tabel 1</h1>
-	<table class="data-table">
-		<caption class="title">Data Penjualan Divisi Elektronik</caption>
-		<thead>
-			<tr>
-           <th>NO</th>
-           <th>Id Gudang</th>
+<h1 align="center"> Tabel Gudang</h1>
+    <table border="1" width="600px" align="center">
+       <thead>
+       <tr>
+           <th>ID Gudang</th>
            <th>Stok Produk</th>
-           <th>Tanggal Datang Bunga</th>
-           <th>Jenis Produk</th>
-           <th>Id Pemesanan Bunga</th>
-           <th>Kode Produk</th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php
-		$no 	= 1;
-		$total 	= 0;
-		while ($row = mysqli_fetch_array($query))
-		{
-			echo '<tr>
-	   <td>'.$no.'</td>
-	   <td>".$data['idgudang']."</td>
-           <td>".$data['stok_produk']."</td>
-           <td>".$data['tanggal_datang_bunga']."</td>
-           <td>".$data['jenis_produk']."</td>
-           <td>".$data['idpesan_bunga']."</td>
-           <td>".$data['kode_produk']."</td>
-				</tr>';
-		}?>
-		</tbody>
-	</table>
+           <th>Tanggal DAtang Bunga</th>
+       </tr>
+       </thead>
+
+       <tbody>
+<?php
+//ambil data dari tb_admin di database
+$ambildata=mysqli_query($conect, "SELECT * FROM gudang");
+while($a=mysqli_fetch_array($ambildata)){
+    ?>
+       <tr>
+           <td><?php echo $a['idgudang'];?></td>
+           <td><?php echo $a['stok_produk'];?></td>
+           <td><?php echo $a['tanggal_datang_bunga'];?></td>
+	   <td><?php echo $a['jenis_produk'];?></td>
+	   <td><?php echo $a['idpesan_bunga'];?></td>
+	   <td><?php echo $a['kode_produk'];?></td>
+       </tr>
+<?php
+}
+?>
+</tbody>
+
+</table>
+
 </body>
 </html>
